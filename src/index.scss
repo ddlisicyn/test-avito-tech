@@ -2,6 +2,7 @@
 @import './containers/MainPage/MainPage.scss';
 @import './components/Header/Header.scss';
 @import './components/Main/Main.scss';
+@import './components/Loader/Loader.scss';
 @import './components/News/News.scss';
 @import './containers/NewsPage/NewsPage.scss';
 
@@ -17,4 +18,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.hide {
+  display: none;
 }

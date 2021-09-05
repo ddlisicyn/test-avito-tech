@@ -10,9 +10,9 @@ export function News({data}) {
         } = data;
 
     const ratingValue = (score > 1) ? 'points' : 'point';
-    const rating = (score > 15) ? 3 :
-            (score > 10) ? 2 : 
-            (score > 5) ? 1 : 0;
+    const rating = (score >= 15) ? 3 :
+            (score >= 10) ? 2 : 
+            (score >= 5) ? 1 : 0;
     const date = new Date(time * 1000).toLocaleDateString();
 
     return (
