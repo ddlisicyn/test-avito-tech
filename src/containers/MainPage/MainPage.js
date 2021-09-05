@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getNewStoriesIds, getNewsById } from '../../api/getNews';
-import { News } from "../../components/News/News";
-import { List } from 'semantic-ui-react';
-import { Button } from 'semantic-ui-react'
+import { Header } from "../../components/Header/Header";
+import { Main } from "../../components/Main/Main";
 
 function MainPage() {
   const [ids, setIds] = useState([]);
@@ -33,25 +32,8 @@ function MainPage() {
 
   return (
     <>
-      <header className="header">
-        <Button onClick={() => updateNews()} primary>
-          Update
-        </Button>
-      </header>
-      <main className="main">
-        <List celled ordered>
-        {
-          data.map(news => (
-            <List.Item>
-              <News
-                key={news.id}
-                data={news}
-              />
-            </List.Item>
-          ))
-        }
-        </List>
-      </main>
+      <Header updateNews={updateNews}/>
+      <Main data={data} />
     </>
   )
 }

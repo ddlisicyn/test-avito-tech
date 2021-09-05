@@ -1,6 +1,8 @@
 @import 'semantic-ui-css/semantic.min.css';
-@import './components/News/News.scss';
 @import './containers/MainPage/MainPage.scss';
+@import './components/Header/Header.scss';
+@import './components/Main/Main.scss';
+@import './components/News/News.scss';
 @import './containers/NewsPage/NewsPage.scss';
 
 body {

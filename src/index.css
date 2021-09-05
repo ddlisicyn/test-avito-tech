@@ -1,14 +1,31 @@
 @import 'semantic-ui-css/semantic.min.css';
-.main__news-item h5 {
-  margin: 0 0 0 2%;
-}
-
-.main__news-info {
+.header {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+  height: 10vh;
+  padding: 2% 0;
 }
-.main__news-info p {
-  margin: 0 2% 0 2%;
+.header button {
+  height: 5vh;
+}
+
+.main__news-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.main__news-item h3 {
+  margin: 0;
+}
+.main__news-item p {
+  margin: 0;
+}
+
+.main__news-date, .main__news-author {
+  display: flex;
+  flex-direction: row;
 }
 
 body {
