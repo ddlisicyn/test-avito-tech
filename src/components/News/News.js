@@ -1,13 +1,14 @@
 import React from "react";
 import { Rating, Icon } from 'semantic-ui-react';
 
-export function News({data}) {
-        const {
-            by,
-            score,
-            time,
-            title
-        } = data;
+export function News({data, onNewsClick}) {
+    const {
+        by,
+        score,
+        time,
+        title,
+        id
+    } = data;
 
     const ratingValue = (score > 1) ? 'points' : 'point';
     const rating = (score >= 15) ? 3 :
@@ -16,7 +17,7 @@ export function News({data}) {
     const date = new Date(time * 1000).toLocaleDateString();
 
     return (
-        <div className="main__news-item">
+        <div onClick={() => onNewsClick(id)} className="main__news-item">
             <h3>{title}</h3>
             <div className="main__news-info">
                 <div className="mai__news-rating">

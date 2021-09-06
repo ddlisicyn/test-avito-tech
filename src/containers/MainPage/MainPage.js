@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { getNewStoriesIds, getNewsById } from '../../api/getNews';
 import { Header } from "../../components/Header/Header";
 import { Main } from "../../components/Main/Main";
+import { routes } from "../../constans/routes";
 
-function MainPage() {
+export function MainPage() {
   const [ids, setIds] = useState([]);
   const [data, setData] = useState([]);
+  const history = useHistory();
+  const { newsPage } = routes;
 
   useEffect(() => { 
     updateNews()
@@ -24,6 +28,10 @@ function MainPage() {
       .then(ids => setIds(ids.splice(0, 100)))
   }
 
+  const onNewsClick = (id) => {
+    history.push(`${newsPage}/${id}`);
+  }
+
   /* let timerId = setTimeout(function update() {
     updateNews();
     console.log('updated');
@@ -33,9 +41,7 @@ function MainPage() {
   return (
     <>
       <Header updateNews={updateNews}/>
-      <Main data={data} />
+      <Main onNewsClick={onNewsClick} data={data} />
     </>
   )
 }
-
-export default MainPage;
