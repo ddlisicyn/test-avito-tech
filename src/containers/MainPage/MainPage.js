@@ -3,11 +3,13 @@ import { useHistory } from "react-router-dom";
 import { getNewStoriesIds, getNewsById } from '../../api/getNews';
 import { Header } from "../../components/Header/Header";
 import { Main } from "../../components/Main/Main";
+import { routes } from "../../constans/routes";
 
 export function MainPage() {
   const [ids, setIds] = useState([]);
   const [data, setData] = useState([]);
   const history = useHistory();
+  const { newsPage } = routes;
 
   useEffect(() => { 
     updateNews()
@@ -27,7 +29,7 @@ export function MainPage() {
   }
 
   const onNewsClick = (id) => {
-    history.push(`/news/${id}`);
+    history.push(`${newsPage}/${id}`);
   }
 
   /* let timerId = setTimeout(function update() {

@@ -32,7 +32,11 @@ export function NewsPage() {
                 <div className="main__news-title">
                     <h1>{title}</h1>
                     <Icon name='linkify'/>
-                    <a href={url}><i>Link to source</i></a>
+                    <a 
+                        href={url}
+                        target="_blank"
+                        rel="noreferrer"
+                    ><i>Link to source</i></a>
                 </div>
                 <div className="main__page-author">
                     <Icon name='user outline' />

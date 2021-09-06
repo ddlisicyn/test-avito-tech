@@ -1,6 +1,6 @@
 const routes = {
     core: '/',
-    newsPage: '/news/:id'
+    newsPage: '/news'
 }
 
 export { routes };

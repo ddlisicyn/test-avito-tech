@@ -14,7 +14,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path={newsPage}>
+        <Route path={`${newsPage}/:id`}>
           <NewsPage />
         </Route>
         <Route path={core}>
