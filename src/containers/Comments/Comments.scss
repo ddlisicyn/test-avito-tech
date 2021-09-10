@@ -1,0 +1,11 @@
+.main__comments {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    max-width: 98vw !important;
+}
+
+.main__comments-header {
+    background: inherit;
+    height: auto;
+}

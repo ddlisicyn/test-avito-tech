@@ -72,6 +72,10 @@
   font-size: 1.15em;
 }
 
+.main__news-page {
+  padding: 0 2%;
+}
+
 .main__news-title {
   margin: 3% 0 0 0;
 }
@@ -92,6 +96,18 @@
 
 .main__page-author {
   margin: 3% 0 0 0;
+}
+
+.main__comments {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  max-width: 98vw !important;
+}
+
+.main__comments-header {
+  background: inherit;
+  height: auto;
 }
 
 body {
