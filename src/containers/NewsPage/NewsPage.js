@@ -1,24 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getNewsById } from '../../api/getNews';
+import { getItemById } from '../../api/services';
 import { Header } from '../../components/Header/Header';
 import { Icon } from 'semantic-ui-react';
 import { Loader } from '../../components/Loader/Loader';
+import { Comments } from '../Comments/Comments';
 
 export function NewsPage() {
     const { id } = useParams();
     const [news, setNews] = useState({});
 
     useEffect(() => {
-        getNewsById(id)
-            .then(news => setNews(news));
+        refreshComments()
     }, []);
+
+    const refreshComments = () => {
+        getItemById(id)
+            .then(news => setNews(news));
+    }
 
     const {
         by,
         time,
         title,
-        url
+        url,
+        kids
     } = news;
 
     const date = new Date(time * 1000).toLocaleDateString();
@@ -46,6 +52,7 @@ export function NewsPage() {
                     <Icon name='calendar alternate outline'/>
                     <p>{date}</p>
                 </div>
+                <Comments rootCommentsId={kids} refreshComments={refreshComments}/>
             </div>
         </main>
         </>

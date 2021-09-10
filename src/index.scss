@@ -5,6 +5,8 @@
 @import './components/Loader/Loader.scss';
 @import './components/News/News.scss';
 @import './containers/NewsPage/NewsPage.scss';
+@import './containers/Comments/Comments.scss';
+@import './components/Comment/Comment.scss';
 
 body {
   margin: 0;
@@ -13,6 +15,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #f5efeb;
 }
 
 code {

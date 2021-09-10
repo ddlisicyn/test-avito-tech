@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { getNewStoriesIds, getNewsById } from '../../api/getNews';
+import { getNewStoriesIds, getItemById } from '../../api/services';
 import { Header } from "../../components/Header/Header";
 import { Main } from "../../components/Main/Main";
 import { routes } from "../../constans/routes";
@@ -17,7 +17,7 @@ export function MainPage() {
 
   useEffect(() => {
     if (ids.length > 0) {
-      const promises = ids.map(id => getNewsById(id));
+      const promises = ids.map(id => getItemById(id));
       Promise.all(promises)
         .then(response => setData(response))
     }  
@@ -35,7 +35,6 @@ export function MainPage() {
   /* let timerId = setTimeout(function update() {
     updateNews();
     console.log('updated');
-    timerId = setTimeout(update, 60000);
   }, 60000); */
 
   return (

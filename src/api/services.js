@@ -6,7 +6,7 @@ export const getNewStoriesIds = async () => {
   return await response.json();
 }
 
-export const getNewsById = async (id) => {
+export const getItemById = async (id) => {
   let response = await fetch(`${path}item/${id}.json`);
 
   return await response.json();

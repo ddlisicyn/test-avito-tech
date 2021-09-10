@@ -9,14 +9,15 @@ export function Main({data, onNewsClick}) {
             <Loader visibility={!!data.length}/>
             <List celled>
             {
-            data.map(news => (
+            data.map(news => news ? (
                 <List.Item key={news.id}>
                 <News
                     data={news}
                     onNewsClick={onNewsClick}
                 />
                 </List.Item>
-            ))
+                ) : null
+            )
             }
             </List>
         </main>
