@@ -5,18 +5,27 @@ import { Header } from '../../components/Header/Header';
 import { Icon } from 'semantic-ui-react';
 import { Loader } from '../../components/Loader/Loader';
 import { Comments } from '../Comments/Comments';
+import { AutoUpdater } from "../../utils/autoUpdater";
+const autoUpdater = new AutoUpdater();
 
 export function NewsPage() {
     const { id } = useParams();
     const [news, setNews] = useState({});
 
     useEffect(() => {
-        refreshComments()
+        refreshComments();
+        autoUpdater.start(refreshComments);
+        return () => autoUpdater.stop();
     }, []);
 
     const refreshComments = () => {
         getItemById(id)
             .then(news => setNews(news));
+    }
+
+    const handleRefresh = () => {
+      autoUpdater.refresh();
+      refreshComments();
     }
 
     const {
@@ -52,7 +61,7 @@ export function NewsPage() {
                     <Icon name='calendar alternate outline'/>
                     <p>{date}</p>
                 </div>
-                <Comments rootCommentsId={kids} refreshComments={refreshComments}/>
+                <Comments rootCommentsId={kids} refreshComments={handleRefresh}/>
             </div>
         </main>
         </>
