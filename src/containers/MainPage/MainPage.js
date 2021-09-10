@@ -20,7 +20,6 @@ export function MainPage() {
   }, []);
 
   useEffect(() => {
-    console.log('new ids', ids);
     if (ids.length > 0) {
       const promises = ids.map(id => getItemById(id));
       Promise.all(promises)
@@ -41,8 +40,6 @@ export function MainPage() {
   const onNewsClick = (id) => {
     history.push(`${newsPage}/${id}`);
   }
-
-  console.log(data);
 
   return (
     <>
