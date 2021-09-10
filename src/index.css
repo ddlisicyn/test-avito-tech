@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  height: 12.5vh;
+  height: 12.5%;
   background: #333;
   padding: 2% 0;
   color: white;
@@ -22,7 +22,6 @@
 .main {
   display: flex;
   justify-content: center;
-  min-height: 87.5vh;
   background: #f5efeb;
 }
 
@@ -110,11 +109,18 @@
   height: auto;
 }
 
+.main__comments-refresh {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #f5efeb;
 }
 
 code {

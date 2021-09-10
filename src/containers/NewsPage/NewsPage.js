@@ -11,9 +11,13 @@ export function NewsPage() {
     const [news, setNews] = useState({});
 
     useEffect(() => {
+        refreshComments()
+    }, []);
+
+    const refreshComments = () => {
         getItemById(id)
             .then(news => setNews(news));
-    }, []);
+    }
 
     const {
         by,
@@ -48,7 +52,7 @@ export function NewsPage() {
                     <Icon name='calendar alternate outline'/>
                     <p>{date}</p>
                 </div>
-                <Comments rootCommentsId={kids}/>
+                <Comments rootCommentsId={kids} refreshComments={refreshComments}/>
             </div>
         </main>
         </>

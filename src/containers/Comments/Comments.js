@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Comment as SemanticComment, Header as SemanticHeader } from 'semantic-ui-react';
+import { Comment as SemanticComment, Header as SemanticHeader, Icon } from 'semantic-ui-react';
 import { Comment } from "../../components/Comment/Comment";
 import { getItemById } from "../../api/services";
 import { insertChildren } from "../../utils/insertChildren";
 
-export function Comments({rootCommentsId}) {
+export function Comments({rootCommentsId, refreshComments}) {
     const [comments, setComments] = useState([]);
 
     useEffect(() => {
@@ -29,10 +29,15 @@ export function Comments({rootCommentsId}) {
     }
 
     return (
+        <>
         <SemanticComment.Group className="main__comments">
             <SemanticHeader as='h3' className="main__comments-header">
-            Comments
+                Comments
             </SemanticHeader>
+            <div onClick={refreshComments}className="main__comments-refresh">
+                <Icon name="refresh"/>
+                <p>Refresh comments</p>
+            </div>
             {
             (comments.length > 0) ?
                 comments.map(comment => (
@@ -44,6 +49,7 @@ export function Comments({rootCommentsId}) {
                 ))
             : 'No comments'
             }
-        </SemanticComment.Group>  
+        </SemanticComment.Group>
+        </>  
     )
 }

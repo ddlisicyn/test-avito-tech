@@ -9,3 +9,9 @@
     background: inherit;
     height: auto;
 }
+
+.main__comments-refresh {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+}

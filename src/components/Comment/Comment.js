@@ -6,6 +6,7 @@ export function Comment({comment, loadMore}) {
 
     const {
         by,
+        deleted,
         text,
         time,
         kids,
@@ -16,44 +17,48 @@ export function Comment({comment, loadMore}) {
         new Date(time * 1000).toLocaleString()
     ), [time]);
 
-    return (
-    <SemanticComment>
-      <Icon name="user"/>
-      <SemanticComment.Content>
-        <SemanticComment.Author as='a'>{by}</SemanticComment.Author>
-        <SemanticComment.Metadata>
-          <div>{date}</div>
-        </SemanticComment.Metadata>
-        <SemanticComment.Text dangerouslySetInnerHTML={{__html: text}} />
-        {
-        kids ?
-            <SemanticComment.Actions>
-                <SemanticComment.Action
-                    onClick={() => loadMore(kids)}
-                >Load more</SemanticComment.Action>
-            </SemanticComment.Actions>
-        : ''
-        }
-        <SemanticComment.Group>
-            {
-            (children.length > 0) ? 
-                children.map(comment => (
-                    <Comment 
-                        key={comment.id} 
-                        comment={comment}
-                        loadMore={loadMore}
-                    />
-                )) : null
-            }
-        </SemanticComment.Group>
-      </SemanticComment.Content>
-    </SemanticComment>
-    )
+    return !deleted ? (
+        <SemanticComment>
+            <Icon name="user"/>
+            <SemanticComment.Content>
+                <SemanticComment.Author as='a'>{by}</SemanticComment.Author>
+                <SemanticComment.Metadata>
+                <div>{date}</div>
+                </SemanticComment.Metadata>
+                <SemanticComment.Text dangerouslySetInnerHTML={{__html: text}} />
+                {
+                kids ?
+                    <SemanticComment.Actions>
+                        <SemanticComment.Action
+                            onClick={() => loadMore(kids)}
+                        >Load more</SemanticComment.Action>
+                    </SemanticComment.Actions>
+                : ''
+                }
+                {
+                children.length > 0 ? (
+                    <SemanticComment.Group>
+                    {
+                        children.map(comment => (
+                            <Comment 
+                                key={comment.id} 
+                                comment={comment}
+                                loadMore={loadMore}
+                            />
+                        ))
+                    }
+                    </SemanticComment.Group>
+                ) : null
+                }
+            </SemanticComment.Content>
+        </SemanticComment>
+    ) : null
 }
 
 Comment.propTypes = {
     comment: PropTypes.shape({
         id: PropTypes.number,
+        deleted: PropTypes.bool,
         parent: PropTypes.number,
         by: PropTypes.string,
         text: PropTypes.string,
