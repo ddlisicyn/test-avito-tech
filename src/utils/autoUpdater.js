@@ -3,7 +3,7 @@ export class AutoUpdater {
     intervalId;
     callback; 
 
-    constructor(time = 10000) {
+    constructor(time = 60000) {
         this.time = time;
     }
 
